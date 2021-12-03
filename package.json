@@ -1,0 +1,20 @@
+{
+  "name": "pietrobot",
+  "version": "1.0.0",
+  "description": "um bot do pietro, que todo domingo diz que está precisando de uma namorada",
+  "main": "src/index.ts",
+  "module": "",
+  "scripts": {
+    "start": "node src/index.ts"
+  },
+  "repository": "https://github.com/tckthecreator/pietrobot.git",
+  "author": "tckthecreator <dsoouuzavitu@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^10.0.0" 
+  },
+  "dependencies": {
+    "node-cron": "^3.0.0",
+    "twit": "^2.2.11"
+  }
+}
