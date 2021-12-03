@@ -10,6 +10,26 @@ const T = new Twit({
   timeout_ms:           60*1000,     
 })
 
-cron.schedule('0 0 18 ? * SUN *', () => {
-    T.post('statuses/update', { status: 'Estou precisando de uma namorada amigos'})
+const frases = [
+  'Estou precisando de uma namorada',
+  'A procura de uma namorada',
+  'Só queria uma namoradinha',
+  'Não aguento mais dormir sozinho',
+  'Prometi pra mim que a próxima que beijasse ia namorar, por enquanto tô cumprindo a risca',
+  'Não aguento mais ser solteiro',
+  'Já é domingo. Alguém p namorar comigo até às 23h59????',
+  'hoje eu vou arrumar uma namorada',
+  'Preciso arrumar uma namorada',
+  'Não vai ter jeito, vou ter que começar a namorar',
+  'Essa vida de solteiro não dá mais não',
+  'Começar a namorar já virou questão de saúde pública, não dá mais'
+]
+
+cron.schedule('0 18 * * sun', () => {
+    let indexSorteado = Math.floor(Math.random() * frases.length)
+    T.post('statuses/update', { status: `${frases[indexSorteado]}`})
 });
+
+cron.schedule('0 18 * * fri', () => {
+  T.post('statuses/update', { status: 'Amigos, o que farão hoje?'})
+})

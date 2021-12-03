@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "module": "",
   "scripts": {
-    "start": "node src/index.ts"
+    "start": "node src/index.js"
   },
   "repository": "https://github.com/tckthecreator/pietrobot.git",
   "author": "tckthecreator <dsoouuzavitu@gmail.com>",
