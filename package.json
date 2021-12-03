@@ -2,7 +2,7 @@
   "name": "pietrobot",
   "version": "1.0.0",
   "description": "um bot do pietro, que todo domingo diz que está precisando de uma namorada",
-  "main": "src/index.ts",
+  "main": "src/index.js",
   "module": "",
   "scripts": {
     "start": "node src/index.ts"
