@@ -25,11 +25,15 @@ const frases = [
   'Começar a namorar já virou questão de saúde pública, não dá mais'
 ]
 
-cron.schedule('0 0 18 * Sunday', () => {
+cron.schedule('0 18 * * Sunday', () => {
     let indexSorteado = Math.floor(Math.random() * frases.length)
     T.post('statuses/update', { status: `${frases[indexSorteado]}`})
+}, {
+  timezone: "America/Sao_Paulo"
 });
 
-cron.schedule('0 0 18 * Friday', () => {
+cron.schedule('0 18 * * Friday', () => {
   T.post('statuses/update', { status: 'Amigos, o que farão hoje?'})
+}, {
+  timezone: "America/Sao_Paulo"
 })
