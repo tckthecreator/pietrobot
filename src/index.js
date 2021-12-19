@@ -1,13 +1,13 @@
 require('dotenv').config()
 const Twit = require('twit')
 const cron = require('node-cron')
- 
+
 const T = new Twit({
   consumer_key:         process.env.TWITTER_API_KEY,
   consumer_secret:      process.env.TWITTER_API_SECRET,
   access_token:         process.env.TWITTER_ACCESS_TOKEN,
   access_token_secret:  process.env.TWITTER_ACCESS_SECRET,
-  timeout_ms:           60*1000,     
+  timeout_ms:           60*1000,
 })
 
 const frases = [
@@ -25,15 +25,17 @@ const frases = [
   'Começar a namorar já virou questão de saúde pública, não dá mais'
 ]
 
-cron.schedule('0 18 * * Sunday', () => {
-    let indexSorteado = Math.floor(Math.random() * frases.length)
-    T.post('statuses/update', { status: `${frases[indexSorteado]}`})
+cron.schedule('30 19 * * sun', () => {
+  T.post('statuses/update', { status: `${frases[Math.floor(Math.random() * frases.length)]}`})
 }, {
-  timezone: "America/Sao_Paulo"
+  timezone: "America/Sao_Paulo",
+  scheduled: true,
 });
 
-cron.schedule('0 18 * * Friday', () => {
+cron.schedule('0 18 * * sun', () => {
   T.post('statuses/update', { status: 'Amigos, o que farão hoje?'})
 }, {
-  timezone: "America/Sao_Paulo"
+  timezone: "America/Sao_Paulo",
+  scheduled: true,
 })
+
