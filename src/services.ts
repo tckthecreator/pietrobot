@@ -16,3 +16,7 @@ const T = new Twitter({
 export const postaFrase = (frase: string) => {
     T.post('statuses/update', { status: frase })
 }
+
+export const sextouAmigos = () => {
+    T.post('statuses/update', { status: 'Amigos, o que farão hoje?' })
+}
