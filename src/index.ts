@@ -1,17 +1,16 @@
-import cron from 'node-cron'
-import { pegaFrase } from './frases'
+import EventEmitter from 'events'
 import { postaFrase, sextouAmigos } from './services'
+import { pegaFrase } from './frases'
+
 import dotenv from 'dotenv'
 dotenv.config()
 
-cron.schedule('0 18 * * sun', () => {
-    postaFrase(pegaFrase())
-}, {
-    timezone: "America/Sao_Paulo",
+export const eventEmitter = new EventEmitter()
+
+eventEmitter.on("friday", () => {
+    sextouAmigos()
 })
 
-cron.schedule('0 18 * * fri', () => {
-    sextouAmigos()
-}, {
-    timezone: "America/Sao_Paulo"
+eventEmitter.on("sunday", () => {
+    postaFrase(pegaFrase())
 })
