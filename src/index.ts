@@ -1,16 +1,15 @@
 import EventEmitter from 'events'
 import { postaFrase, sextouAmigos } from './services'
 import { pegaFrase } from './frases'
+import { CronJob } from "cron"
 
-import dotenv from 'dotenv'
-dotenv.config()
+const fridayCron = new CronJob("0 18 * * fri", () => {
+    sextouAmigos();
+}, null, false, "America/Sao_Paulo")
 
-export const eventEmitter = new EventEmitter()
-
-eventEmitter.on("friday", () => {
-    sextouAmigos()
-})
-
-eventEmitter.on("sunday", () => {
+const sundayCron = new CronJob("0 18 * * sun", () => {
     postaFrase(pegaFrase())
-})
+}, null, false, "America/Sao_Paulo")
+
+fridayCron.start();
+sundayCron.start();
